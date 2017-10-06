@@ -68,6 +68,10 @@ This is equivalent to: `number of classes that contributed to the loss * -x_i`
 
 ![](_equations/dWj.gif)
 
+Remember:
+
+![Indicator Function](_equations/indicator.gif)
+
 You'll need to determine and implement the total loss yourself.
 
 
@@ -75,7 +79,7 @@ You'll need to determine and implement the total loss yourself.
 
 You need to implement the Weight-update using Stochastic Gradient Descent. 
 The only trick here is to make sure you take a Gaussian sample of the data for your
-minibatch. See numpy.random.choice.
+minibatch. See `numpy.random.choice`.
 
 Make sure you append the computed loss of each iteration to the list `loss_history`
 as this is returned at the end. If you don't the visualization won't work!
