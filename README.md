@@ -34,9 +34,9 @@ Remember to take the argmax of the result to get the label
 
 Implement computing the SVM 'Hinge Loss' as described by this formula:
 
-[!Hinge Loss](_equations/hinge-loss.gif)
+![Hinge Loss](_equations/hinge-loss.gif)
 
-[!Hinge Loss Full](_equations/hinge-loss-full.gif)
+![Hinge Loss Full](_equations/hinge-loss-full.gif)
 
 Where:
 
@@ -62,11 +62,11 @@ other regularisation functions.
 Compute loss should also return the gradient of the loss function. The equations
 for the loss per datapoint are as follows:
 
-[!](_equations/dWy_i.gif)
+![](_equations/dWy_i.gif)
 
 This is equivalent to: `number of classes that contributed to the loss * -x_i`
 
-[!](_equations/dWj.gif)
+![](_equations/dWj.gif)
 
 You'll need to determine and implement the total loss yourself.
 
