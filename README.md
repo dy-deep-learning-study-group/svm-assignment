@@ -57,6 +57,10 @@ them when you're confident your maths is correct.
 For regularisation R, start with weight decay but feel free to experiment with
 other regularisation functions.
 
+If you try training your model with a large regularisation strength, the loss
+should blow up - this is also a good _sanity check_ for ensuring you implemented
+it correctly.
+
 #### Gradient
 
 Compute loss should also return the gradient of the loss function. The equations
@@ -95,6 +99,32 @@ accuracy against the validation set.
 
 Running the file `mnist.py` will load the training data for you. You may wish to use
 the skeleton function `train_hyperparamters`, but this is up to you.
+
+#### Advice
+
+The number of iterations is quite hard to set as generally speaking bigger is better.
+However there is a a point of diminishing returns and this should be obvious if your
+model is training properly. You should be able to determine this by looking at the
+plot of your loss over time.
+
+Start by setting your regularisation to 0 and setting your learning rate to be very
+low ~1e-9. The graph of your loss should be fairly constant over time. 
+Gradually increase it until you start seeing that characteristic exponential decrease.
+
+Regularisation is the hardest parameter to tune and also the most important. Without
+regularisation, your model will likely overfit, and you should see this as a large
+difference between your training accuracy and your validation/test accuracy.
+Increasing your regularisation strength will reduce this gap, however it may also
+reduce your overall accuracy so you may need to adjust your other hyperparameters
+as well.
+
+Once you have an idea of what range your hyperparameters are likey to lie in,
+iterate until you find values that optimise your learning. Grid searching works fine
+however _random_ searching has been shown both theoretically and empiraclly to be
+more effective  
+([J. Bergstra and Yoshua Bengio, _Random Search for Hyperparameter Optimisation_,
+Journal of Machine Learning Research 13, 281-305, 2012](
+http://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf))
 
 
 ### Training and Classifying
