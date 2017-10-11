@@ -14,11 +14,12 @@ class SupportVectorMachine:
         Returns:
             The predicted class
         '''
+        return np.argmax(self.W.dot(X), axis=0)
+
         #######################################################################
         # TODO - Implement prediction.
         # Use argmax to return the label
         #######################################################################
-        pass
 
     def compute_loss(self, X, y, reg):
         '''
@@ -38,10 +39,22 @@ class SupportVectorMachine:
         # You should be able to do it with numpy vectorized optimizations
         #######################################################################
         loss = 0.0
+        num_train = X.shape[1]
+
+        scores = self.W.dot(X)
+
+        correct_scores = scores[y, np.arange(0, scores.shape[1])]
+
+        margins = np.maximum(0, (scores - correct_scores) + 1)
+
+        loss = np.sum(margins) - num_train
+
+        loss /= num_train
+        loss += reg * np.sum(self.W**2)
 
         #######################################################################
         # TODO - Calculate the SVM gradient wrt W
-
+        #
         # See lecture slides or README.md for relevant equations
         #
         # Hint - you shouldn't need to calcuate it from scratch, should be able
@@ -49,6 +62,20 @@ class SupportVectorMachine:
         #######################################################################
 
         dW = np.zeros(self.W.shape)  # initialize the gradient as zero
+
+        # Apply indicator function      # Apply indicator function      # Apply indicator function
+        margins[margins < 0] = 0
+        margins[margins > 0] = 1
+
+        # y_i does not contribute to the loss
+        margins[y, np.arange(0, len(y))] = 0
+        # dW_i = number of classes that contrinuted to the loss * x_i
+        margins[y, np.arange(0, len(y))] = -np.sum(margins, axis=0)
+
+        dW = margins.dot(X.T)
+        dW /= num_train
+
+        dW += reg * 2 * self.W
 
         return loss, dW
 
@@ -84,6 +111,12 @@ class SupportVectorMachine:
             loss = 0.0
 
             # Your code here
+            rand_idx = np.random.choice(num_train, batch_size, replace=False)
+            X_batch = X[:, rand_idx]
+            y_batch = y[rand_idx]
+
+            loss, grad = self.compute_loss(X_batch, y_batch, reg)
+            self.W -= learning_rate * grad
 
             loss_history.append(loss)
 

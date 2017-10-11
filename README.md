@@ -1,3 +1,13 @@
+# Solutions Branch
+
+This branch has the code filled in for the SupportVectorMachine class,
+however the hyperparameters for training have not been set as this
+is something that is good practice to tune yourself.
+
+There is some advice on how to train your hyperparameters in the 
+_Hyperparameters_ section.
+
+
 # Linear Support Vector Machine for MNIST dataset
 
 The MNIST database (Modified National Institute of Standards and Technology 
