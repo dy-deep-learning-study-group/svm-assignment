@@ -122,7 +122,7 @@ Once you have an idea of what range your hyperparameters are likey to lie in,
 iterate until you find values that optimise your learning. Grid searching works fine
 however _random_ searching has been shown both theoretically and empiraclly to be
 more effective  
-([J. Bergstra and Yoshua Bengio, _Random Search for Hyperparameter Optimisation_,
+([J. Bergstra and Y. Bengio, _Random Search for Hyperparameter Optimisation_,
 Journal of Machine Learning Research 13, 281-305, 2012](
 http://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf))
 
