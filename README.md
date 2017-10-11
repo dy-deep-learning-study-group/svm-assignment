@@ -34,9 +34,9 @@ Remember to take the argmax of the result to get the label
 
 Implement computing the SVM 'Hinge Loss' as described by this formula:
 
-[!Hinge Loss](_equations/hinge-loss.gif)
+![Hinge Loss](_equations/hinge-loss.gif)
 
-[!Hinge Loss Full](_equations/hinge-loss-full.gif)
+![Hinge Loss Full](_equations/hinge-loss-full.gif)
 
 Where:
 
@@ -62,11 +62,15 @@ other regularisation functions.
 Compute loss should also return the gradient of the loss function. The equations
 for the loss per datapoint are as follows:
 
-[!](_equations/dWy_i.gif)
+![](_equations/dWy_i.gif)
 
 This is equivalent to: `number of classes that contributed to the loss * -x_i`
 
-[!](_equations/dWj.gif)
+![](_equations/dWj.gif)
+
+Remember:
+
+![Indicator Function](_equations/indicator.gif)
 
 You'll need to determine and implement the total loss yourself.
 
@@ -75,7 +79,7 @@ You'll need to determine and implement the total loss yourself.
 
 You need to implement the Weight-update using Stochastic Gradient Descent. 
 The only trick here is to make sure you take a Gaussian sample of the data for your
-minibatch. See numpy.random.choice.
+minibatch. See `numpy.random.choice`.
 
 Make sure you append the computed loss of each iteration to the list `loss_history`
 as this is returned at the end. If you don't the visualization won't work!
